@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="./img/a.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ancient </title>
+    <link rel="stylesheet" href="./css (1)/style (1).css"
+</head>
+<body>
+    <div class="game-board">
+        <a href="./index (1).html"><img src="img (1)/logo sem fundo (1).png" class="logosf"></a>
+         <img src="img (1)/mulher (1).gif" class="mario">
+         <img src="img (1)/lixeira (1).png" class="pipe">
+         <img src="img (1)/nuvem 1 (1).png" class="nuvem1">
+         <img src="img (1)/nuvem (1).png" class="nuvem">
+         <img src="img (1)/lua (1).png" class="lua"
+        
+    </div> 
+
+    <div class="gira">
+        <a href="./game.html">
+        <img src="./img (1)/botao_que_gira_AdobeExpress.gif" class="gira">
+
+    </div>
+
+    <audio src="./song mp3 (1).mp3" autoplay loop> </audio>
+    
+    <script src="./js/script.js" defer> </script>
+
+    <script>
+        const mario = document.querySelectorAll('.mario')[0];
+        const pipe = document.querySelectorAll('.pipe')[0];
+        const jump = () => {
+            mario.classList.add("jump");
+            setTimeout(()=>{
+                mario.classList.remove('jump');
+            },500);
+        }
+
+        document.addEventListener('keydown', jump);
+
+        const loop = setInterval(() =>{
+
+            const pipePosition = pipe.offsetLeft;
+            const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+
+            if (pipePosition <= 140 &&pipePosition > 40 && marioPosition <78) {
+
+                pipe.style.animation  =  'none';
+                pipe.style.left= `${pipePosition}px`;
+
+                mario.style.animation  =  'none';
+                mario.style.bottom= `${marioPosition}px`;
+
+                mario.src='./img (1)/morreu (1).gif'; 
+                clearInterval(loop);
+            }
+        }, 10)
+
+
+    </script>
+
+   
+</body>
+</html>
